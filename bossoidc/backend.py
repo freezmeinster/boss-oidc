@@ -86,7 +86,10 @@ def get_user_by_id(request, id_token):
             # DP NOTE: required, as the username field is still a unique field,
             #          which doesn't allow multiple users in the table with the
             #          same username
-            user.delete()
+            # Instead of deleteing user, we updated it 
+            UserModel.objects.filter(username=username).update(UID=uid)
+            # Ini apa maksudnya hapus hapus ?
+            #user.delete()
         except:
             pass
 
