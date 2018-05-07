@@ -1,0 +1,4 @@
+include LINCESE.md
+include README.md
+recursive-include bossoidc *.py
+recursive-include bossoidc/migrations *
