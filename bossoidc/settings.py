@@ -11,11 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+from os import getenv
 from django.conf import settings
 # bypass the djangooidc provided page and go directly to the keycloak page
-LOGIN_URL = "/openid/openid/KeyCloak"
-LOGOUT_URL = "/openid/logout"
+TENANT = "/" + getenv("NDE_TENANT") if getenv("NDE_TENANT") else ""
+
+LOGIN_URL = TENANT + "/openid/openid/KeyCloak"
+LOGOUT_URL = TENANT + "/openid/logout"
 
 # DJANGO-OIDC Configuration - Session based SSO authentication
 OIDC_PROVIDERS = {
