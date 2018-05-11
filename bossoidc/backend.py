@@ -49,6 +49,8 @@ def get_user_by_id(request, id_token):
     """ Taken from djangooidc.backends.OpenIdConnectBackend and made common for
     drf-oidc-auth to make use of the same create user functionality
     """
+    if id_token.get("request"):
+        request = id_token.get("request")
     UserModel = get_user_model()
     uid = id_token['sub']
     username = id_token['preferred_username']
